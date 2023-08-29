@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>FTDERGenericExecutionDataContract</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+/// <summary>
+/// Data contract class for the vendor cross reference report.
+/// </summary>
+[
+    DataContractAttribute,
+    SysOperationContractProcessingAttribute(classStr(FTDERGenericExecutionUIBuilder))
+]
+abstract class FTDERGenericExecutionDataContract
+{
+    str               modelDsName;
+    str               parametersDsName;
+    Filename          fileName;
+    ERFormatMappingId formatMappingId;
+    NoYes             showDestination;
+    boolean           uncheckXDS;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmUncheckXDS</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Internal boolean to know if uncheck the XDS, because some roles that might have
+    /// access to execute reports may not have access to the document management and in
+    /// that case the ER execution would fail. If you apply the filter properly in the 
+    /// ER you can unckeck the policy safely, but be careful since unckecking this without
+    /// the proper filtering will provoke potential access to restricted data.
+    /// </summary>
+    /// <param name = "_uncheckXDS"></param>
+    /// <returns></returns>
+    [DataMember,
+        SysOperationControlVisibility(false)]
+    public boolean parmUncheckXDS(boolean _uncheckXDS = uncheckXDS)
+    {
+        uncheckXDS = _uncheckXDS;
+        return uncheckXDS;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmShowDestination</Name>
+				<Source><![CDATA[
+    [DataMember,
+        SysOperationLabel(identifierStr("Show destination"))]//This of course must be a label
+    public NoYes parmShowDestination(NoYes _showDestination = showDestination)
+    {
+        showDestination = _showDestination;
+        return showDestination;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmFormatMappingId</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Parm method for the format mapping.
+    /// </summary>
+    /// <param name = "_formatMappingId">The new format mapping (optional).</param>
+    /// <returns>The format mapping.</returns>
+    [
+        DataMemberAttribute('FormatMappingId'),
+        SysOperationLabelAttribute(literalstr("@ElectronicReporting:FormatMapping")),
+        SysOperationHelpTextAttribute(literalstr("@ElectronicReporting:FormatMapping"))
+    ]
+    public ERFormatMappingId parmFormatMappingId(ERFormatMappingId _formatMappingId = formatMappingId)
+    {
+        formatMappingId = _formatMappingId;
+        return formatMappingId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmModelDsName</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Parm method for the model data source name.
+    /// </summary>
+    /// <param name = "_modelDsName">The new model data source name (optional).</param>
+    /// <returns>The model data source name.</returns>
+    [DataMemberAttribute('ModelDsName'), SysOperationControlVisibility(false)]
+    public str parmModelDsName(str _modelDsName = modelDsName)
+    {
+        modelDsName = _modelDsName;
+        return modelDsName;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmParametersDsName</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Parm method for the parameter data source name.
+    /// </summary>
+    /// <param name = "_parametersDsName">The new parameter data source name (optional).</param>
+    /// <returns>The parameter data source name.</returns>
+    [DataMemberAttribute('ParametersDsName'), SysOperationControlVisibility(false)]
+    public str parmParametersDsName(str _parametersDsName = parametersDsName)
+    {
+        parametersDsName = _parametersDsName;
+        return parametersDsName;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmFileName</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Parm method for the file name.
+    /// </summary>
+    /// <param name = "_vendAccount">The new vendor account number (optional).</param>
+    /// <returns>The vendor account number.</returns>
+    [DataMemberAttribute('FileName')]
+    public Filename parmFileName(Filename _fileName = fileName)
+    {
+        fileName = _fileName;
+        return fileName;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
