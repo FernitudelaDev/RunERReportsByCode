@@ -6,18 +6,15 @@
 /// <summary>
 /// Data contract class for the vendor cross reference report.
 /// </summary>
-[
-    DataContractAttribute,
-    SysOperationContractProcessingAttribute(classStr(FTDERGenericExecutionUIBuilder))
-]
-abstract class FTDERGenericExecutionDataContract
+[DataContract]
+public class FTDERGenericExecutionDataContract
 {
     str               modelDsName;
     str               parametersDsName;
     Filename          fileName;
     ERFormatMappingId formatMappingId;
     NoYes             showDestination;
-    boolean           uncheckXDS;
+    NoYes             uncheckXDS;
 
 }
 ]]></Declaration>
@@ -36,7 +33,7 @@ abstract class FTDERGenericExecutionDataContract
     /// <returns></returns>
     [DataMember,
         SysOperationControlVisibility(false)]
-    public boolean parmUncheckXDS(boolean _uncheckXDS = uncheckXDS)
+    public NoYes parmUncheckXDS(NoYes _uncheckXDS = uncheckXDS)
     {
         uncheckXDS = _uncheckXDS;
         return uncheckXDS;
@@ -67,8 +64,7 @@ abstract class FTDERGenericExecutionDataContract
     /// <returns>The format mapping.</returns>
     [
         DataMemberAttribute('FormatMappingId'),
-        SysOperationLabelAttribute(literalstr("@ElectronicReporting:FormatMapping")),
-        SysOperationHelpTextAttribute(literalstr("@ElectronicReporting:FormatMapping"))
+        SysOperationControlVisibility(false)
     ]
     public ERFormatMappingId parmFormatMappingId(ERFormatMappingId _formatMappingId = formatMappingId)
     {
@@ -86,7 +82,10 @@ abstract class FTDERGenericExecutionDataContract
     /// </summary>
     /// <param name = "_modelDsName">The new model data source name (optional).</param>
     /// <returns>The model data source name.</returns>
-    [DataMemberAttribute('ModelDsName'), SysOperationControlVisibility(false)]
+    [
+        DataMemberAttribute('ModelDsName'), 
+        SysOperationControlVisibility(false)
+    ]
     public str parmModelDsName(str _modelDsName = modelDsName)
     {
         modelDsName = _modelDsName;
@@ -103,7 +102,10 @@ abstract class FTDERGenericExecutionDataContract
     /// </summary>
     /// <param name = "_parametersDsName">The new parameter data source name (optional).</param>
     /// <returns>The parameter data source name.</returns>
-    [DataMemberAttribute('ParametersDsName'), SysOperationControlVisibility(false)]
+    [
+        DataMemberAttribute('ParametersDsName'), 
+        SysOperationControlVisibility(false)
+    ]
     public str parmParametersDsName(str _parametersDsName = parametersDsName)
     {
         parametersDsName = _parametersDsName;

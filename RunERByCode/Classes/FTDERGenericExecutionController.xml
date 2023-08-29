@@ -48,7 +48,7 @@ abstract class FTDERGenericExecutionController extends ERFormatMappingRunBaseCon
 			<Method>
 				<Name>getSpecificContract</Name>
 				<Source><![CDATA[
-    public FTDERGenericExecutionDataContract getSpecificContract()
+    private FTDERGenericExecutionDataContract getSpecificContract()
     {
         return this.getDataContractObject(this.contractServiceParamName());
     }
@@ -58,21 +58,21 @@ abstract class FTDERGenericExecutionController extends ERFormatMappingRunBaseCon
 			<Method>
 				<Name>defaultUncheckXDSValue</Name>
 				<Source><![CDATA[
-    public boolean defaultUncheckXDSValue()
+    public NoYes defaultUncheckXDSValue()
     {
-        return false;
+        return NoYes::No;
     }
 
 ]]></Source>
 			</Method>
 			<Method>
-				<Name>run</Name>
+				<Name>runReportController</Name>
 				<Source><![CDATA[
     /// <summary>
     /// Main method for the vendor cross reference controller class.
     /// </summary>
     /// <param name = "_args">The arguments object.</param>
-    public void run()
+    public void runReportController()
     {
         this.parmDialogCaption(this.caption());//This of course must be a label
 
@@ -91,7 +91,7 @@ abstract class FTDERGenericExecutionController extends ERFormatMappingRunBaseCon
 			<Method>
 				<Name>initAndValidateParameters</Name>
 				<Source><![CDATA[
-    public boolean initAndValidateParameters()
+    private boolean initAndValidateParameters()
     {
         this.initDataContract();
 
@@ -103,11 +103,11 @@ abstract class FTDERGenericExecutionController extends ERFormatMappingRunBaseCon
 			<Method>
 				<Name>initDataContract</Name>
 				<Source><![CDATA[
-    public void initDataContract()
+    protected void initDataContract()
     {
         FTDERGenericExecutionDataContract dataContract = this.getSpecificContract();
 
-        dataContract.parmFormatMappingId();
+        dataContract.parmFormatMappingId(this.getSetupFormatMappingId());
 
         dataContract.parmUncheckXDS(this.defaultUncheckXDSValue());
 
