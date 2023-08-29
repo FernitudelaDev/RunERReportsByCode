@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>FTDERGenericExecutionController</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+/// <summary>
+/// Controller class for the vendor cross reference report.
+/// </summary>
+abstract class FTDERGenericExecutionController extends ERFormatMappingRunBaseController
+{
+
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>caption</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Override in children class
+    /// </summary>
+    /// <returns>The caption (string).</returns>
+	public abstract ClassDescription caption()
+    {
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getSetupFormatMappingId</Name>
+				<Source><![CDATA[
+    public abstract ERModelMappingID getSetupFormatMappingId()
+    {
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>contractServiceParamName</Name>
+				<Source><![CDATA[
+    public abstract IdentifierName contractServiceParamName()
+    {
+
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getSpecificContract</Name>
+				<Source><![CDATA[
+    private FTDERGenericExecutionDataContract getSpecificContract()
+    {
+        return this.getDataContractObject(this.contractServiceParamName());
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>defaultUncheckXDSValue</Name>
+				<Source><![CDATA[
+    public NoYes defaultUncheckXDSValue()
+    {
+        return NoYes::No;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>runReportController</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Main method for the vendor cross reference controller class.
+    /// </summary>
+    /// <param name = "_args">The arguments object.</param>
+    public void runReportController()
+    {
+        this.parmDialogCaption(this.caption());//This of course must be a label
+
+        if (this.initAndValidateParameters())
+        {
+            this.startOperation();
+        }
+        else
+        {
+            throw Exception::Error;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>initAndValidateParameters</Name>
+				<Source><![CDATA[
+    private boolean initAndValidateParameters()
+    {
+        this.initDataContract();
+
+        return this.validateDataContractInitParameters();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>initDataContract</Name>
+				<Source><![CDATA[
+    protected void initDataContract()
+    {
+        FTDERGenericExecutionDataContract dataContract = this.getSpecificContract();
+
+        dataContract.parmFormatMappingId(this.getSetupFormatMappingId());
+
+        dataContract.parmUncheckXDS(this.defaultUncheckXDSValue());
+
+        this.setModelAndParameterNamesToDataContract(dataContract);
+
+        dataContract.parmFileName("VendorPurchOrdersReportER");
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>setModelAndParameterNamesToDataContract</Name>
+				<Source><![CDATA[
+    protected void setModelAndParameterNamesToDataContract(FTDERGenericExecutionDataContract _dataContract)
+    {
+        ERSolutionTable         solutionTable;
+        ERFormatMappingTable    formatMappingTable;
+
+        select firstonly FTDERModelDsName, FTDERParametersName from solutionTable
+            where solutionTable.FTDTagForCodeCall           == NoYes::Yes
+                exists join formatMappingTable
+                where solutionTable.RecId                   == formatMappingTable.Solution
+                && formatMappingTable.RecId                 == _dataContract.parmFormatMappingId();
+
+        if (solutionTable)
+        {
+            _dataContract.parmModelDsName(solutionTable.FTDERModelDsName);
+            _dataContract.parmParametersDsName(solutionTable.FTDERParametersName);
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>validateDataContractInitParameters</Name>
+				<Source><![CDATA[
+    protected boolean validateDataContractInitParameters()
+    {
+        boolean                     ret             = true;
+        FTDERGenericExecutionDataContract dataContract    = this.getSpecificContract();
+
+        if (!dataContract.parmFormatMappingId()
+            || !dataContract.parmModelDsName()
+            || !dataContract.parmParametersDsName())
+        {
+            ret = checkFailed("Setup is missing, check Purch parameters");
+        }
+
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
