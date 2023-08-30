@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>FTDSpecImplementationSampleService</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+final class FTDSpecImplementationSampleService extends FTDERGenericExecutionService
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>runReport</Name>
+				<Source><![CDATA[
+    public void runReport(FTDSpecImplementationSampleContract _dataContract)
+    {
+        this.executeERReport(_dataContract);
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

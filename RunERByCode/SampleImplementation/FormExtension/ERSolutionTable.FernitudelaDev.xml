@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxFormExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V6">
+	<Name>ERSolutionTable.FernitudelaDev</Name>
+	<ControlModifications />
+	<Controls>
+		<AxFormExtensionControl xmlns="">
+			<Name>FormExtensionControliywsr2r51</Name>
+			<FormControl xmlns=""
+				i:type="AxFormGroupControl">
+				<Name>FTDERCallFromCode</Name>
+				<AutoDeclaration>Yes</AutoDeclaration>
+				<Type>Group</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<Controls>
+					<AxFormControl xmlns=""
+						i:type="AxFormStringControl">
+						<Name>FTDERCallFromCode_FTDERModelDsName</Name>
+						<Type>String</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<DataField>FTDERModelDsName</DataField>
+						<DataSource>ERSolutionTable</DataSource>
+					</AxFormControl>
+					<AxFormControl xmlns=""
+						i:type="AxFormStringControl">
+						<Name>FTDERCallFromCode_FTDERParametersName</Name>
+						<Type>String</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<DataField>FTDERParametersName</DataField>
+						<DataSource>ERSolutionTable</DataSource>
+					</AxFormControl>
+					<AxFormControl xmlns=""
+						i:type="AxFormCheckBoxControl">
+						<Name>FTDERCallFromCode_FTDTagForCodeCall</Name>
+						<Type>CheckBox</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<DataField>FTDTagForCodeCall</DataField>
+						<DataSource>ERSolutionTable</DataSource>
+					</AxFormControl>
+				</Controls>
+				<DataGroup>ERCodeFromCode</DataGroup>
+				<DataSource>ERSolutionTable</DataSource>
+			</FormControl>
+			<Parent>DetailsHeader</Parent>
+		</AxFormExtensionControl>
+	</Controls>
+	<DataSourceModifications />
+	<DataSourceReferences />
+	<DataSources />
+	<Parts />
+	<PropertyModifications />
+</AxFormExtension>
