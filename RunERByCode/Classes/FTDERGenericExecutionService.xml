@@ -4,9 +4,7 @@
 	<SourceCode>
 		<Declaration><![CDATA[
 using Microsoft.Dynamics365.LocalizationFramework;
-/// <summary>
-/// Service class for the vendor cross reference report.
-/// </summary>
+
 class FTDERGenericExecutionService
 {
 }
@@ -15,10 +13,6 @@ class FTDERGenericExecutionService
 			<Method>
 				<Name>executeERReport</Name>
 				<Source><![CDATA[
-    /// <summary>
-    /// Run the full process of generating the vendor cross reference report.
-    /// </summary>
-    /// <param name = "_contract">The data contract.</param>
     public void executeERReport(FTDERGenericExecutionDataContract _contract)
     {
         if (_contract.parmFormatMappingId())
@@ -37,6 +31,36 @@ class FTDERGenericExecutionService
             warning(strFmt("@SYS26332", new SysDictType(extendedTypeNum(ERFormatMappingId)).label()));
         }
 
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>forceRunDraft</Name>
+				<Source><![CDATA[
+    public boolean forceRunDraft()
+    {
+        return false;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>showInfolog</Name>
+				<Source><![CDATA[
+    public boolean showInfolog()
+    {
+        return true;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>showPromptDialog</Name>
+				<Source><![CDATA[
+    public boolean showPromptDialog(NoYes _showDestination)
+    {
+        return _showDestination == NoYes::Yes;
     }
 
 ]]></Source>
@@ -74,12 +98,11 @@ class FTDERGenericExecutionService
         ERIFormatMappingRun formatMappingRun = ERObjectsFactory::createFormatMappingRunByFormatMappingId(
                     _contract.parmFormatMappingId(),
                     _contract.parmFileName(),
-                    false,
-                    true,
-                    false).withParameter(this.mapDataContractToERParam(_contract));
+                    this.showPromptDialog(_contract.parmShowDestination()),
+                    this.showInfolog(),
+                    this.forceRunDraft()).withParameter(this.mapDataContractToERParam(_contract));
 
         formatMappingRun.withShowDestinationTab(_contract.parmShowDestination() == NoYes::Yes);
-        formatMappingRun.parmShowPromptDialog(_contract.parmShowDestination() == NoYes::Yes);
 
         return formatMappingRun;
 

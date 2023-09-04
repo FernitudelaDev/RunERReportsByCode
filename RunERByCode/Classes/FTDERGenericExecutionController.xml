@@ -3,23 +3,14 @@
 	<Name>FTDERGenericExecutionController</Name>
 	<SourceCode>
 		<Declaration><![CDATA[
-/// <summary>
-/// Controller class for the vendor cross reference report.
-/// </summary>
 abstract class FTDERGenericExecutionController extends ERFormatMappingRunBaseController
 {
-
-
 }
 ]]></Declaration>
 		<Methods>
 			<Method>
 				<Name>caption</Name>
 				<Source><![CDATA[
-    /// <summary>
-    /// Override in children class
-    /// </summary>
-    /// <returns>The caption (string).</returns>
 	public abstract ClassDescription caption()
     {
     }
@@ -46,11 +37,11 @@ abstract class FTDERGenericExecutionController extends ERFormatMappingRunBaseCon
 ]]></Source>
 			</Method>
 			<Method>
-				<Name>getSpecificContract</Name>
+				<Name>getFileNameWithoutExtension</Name>
 				<Source><![CDATA[
-    private FTDERGenericExecutionDataContract getSpecificContract()
+    public abstract Filename getFileNameWithoutExtension()
     {
-        return this.getDataContractObject(this.contractServiceParamName());
+
     }
 
 ]]></Source>
@@ -68,13 +59,9 @@ abstract class FTDERGenericExecutionController extends ERFormatMappingRunBaseCon
 			<Method>
 				<Name>runReportController</Name>
 				<Source><![CDATA[
-    /// <summary>
-    /// Main method for the vendor cross reference controller class.
-    /// </summary>
-    /// <param name = "_args">The arguments object.</param>
     public void runReportController()
     {
-        this.parmDialogCaption(this.caption());//This of course must be a label
+        this.parmDialogCaption(this.caption());
 
         if (this.initAndValidateParameters())
         {
@@ -89,11 +76,21 @@ abstract class FTDERGenericExecutionController extends ERFormatMappingRunBaseCon
 ]]></Source>
 			</Method>
 			<Method>
+				<Name>getSpecificContract</Name>
+				<Source><![CDATA[
+    private FTDERGenericExecutionDataContract getSpecificContract()
+    {
+        return this.getDataContractObject(this.contractServiceParamName());
+    }
+
+]]></Source>
+			</Method>
+			<Method>
 				<Name>initAndValidateParameters</Name>
 				<Source><![CDATA[
     private boolean initAndValidateParameters()
     {
-        this.initDataContract();
+        this.initDataContract(this.getSpecificContract());
 
         return this.validateDataContractInitParameters();
     }
@@ -103,17 +100,15 @@ abstract class FTDERGenericExecutionController extends ERFormatMappingRunBaseCon
 			<Method>
 				<Name>initDataContract</Name>
 				<Source><![CDATA[
-    protected void initDataContract()
+    protected void initDataContract(FTDERGenericExecutionDataContract _dataContract)
     {
-        FTDERGenericExecutionDataContract dataContract = this.getSpecificContract();
+        _dataContract.parmFormatMappingId(this.getSetupFormatMappingId());
 
-        dataContract.parmFormatMappingId(this.getSetupFormatMappingId());
+        _dataContract.parmUncheckXDS(this.defaultUncheckXDSValue());
 
-        dataContract.parmUncheckXDS(this.defaultUncheckXDSValue());
+        this.setModelAndParameterNamesToDataContract(_dataContract);
 
-        this.setModelAndParameterNamesToDataContract(dataContract);
-
-        dataContract.parmFileName("VendorPurchOrdersReportER");
+        _dataContract.parmFileName(this.getFileNameWithoutExtension());
     }
 
 ]]></Source>
