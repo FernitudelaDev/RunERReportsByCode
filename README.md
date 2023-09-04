@@ -2,7 +2,7 @@
 
 This solution includes a generic small "framework" to run new ER from code easily and consistetly without worrying about the logic.
 
-In my youtube video:  and my blog post: . You will find a further explanation of how the solution works and how to implement it.
+In my youtube video: https://youtu.be/7LsKVV62jjw  and my blog post: http://fernitudela.dev/?p=1090 You will find a further explanation of how the solution works and how to implement it.
 
 In the solution you will also find a Sample implementation to help you with an example. The sample implementation includes the following objects:
 
