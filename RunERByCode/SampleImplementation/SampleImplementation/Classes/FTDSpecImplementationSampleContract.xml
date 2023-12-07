@@ -3,8 +3,8 @@
 	<Name>FTDSpecImplementationSampleContract</Name>
 	<SourceCode>
 		<Declaration><![CDATA[
-[DataContractAttribute]
-class FTDSpecImplementationSampleContract extends FTDERGenericExecutionDataContract implements SysOperationValidatable
+[DataContract]
+final class FTDSpecImplementationSampleContract extends FTDERGenericExecutionDataContract implements SysOperationValidatable
 {
     FromDate          fromDate;
     ToDate            toDate;
@@ -39,7 +39,7 @@ class FTDSpecImplementationSampleContract extends FTDERGenericExecutionDataContr
 			<Method>
 				<Name>parmfromDate</Name>
 				<Source><![CDATA[
-    [DataMemberAttribute('fromDate')]
+    [DataMember]
     public FromDate parmfromDate(FromDate _fromDate = fromDate)
     {
         fromDate = _fromDate;
@@ -51,7 +51,7 @@ class FTDSpecImplementationSampleContract extends FTDERGenericExecutionDataContr
 			<Method>
 				<Name>parmtoDate</Name>
 				<Source><![CDATA[
-    [DataMemberAttribute('toDate')]
+    [DataMember]
     public ToDate parmtoDate(ToDate _toDate = toDate)
     {
         toDate = _toDate;
@@ -63,7 +63,7 @@ class FTDSpecImplementationSampleContract extends FTDERGenericExecutionDataContr
 			<Method>
 				<Name>parmVendAccount</Name>
 				<Source><![CDATA[
-    [DataMemberAttribute('VendAccount')]
+    [DataMember]
     public VendAccount parmVendAccount(VendAccount _vendAccount = vendAccount)
     {
         vendAccount = _vendAccount;

@@ -3,7 +3,7 @@
 	<Name>FTDSpecImplementationSampleService</Name>
 	<SourceCode>
 		<Declaration><![CDATA[
-final class FTDSpecImplementationSampleService extends FTDERGenericExecutionService
+internal final class FTDSpecImplementationSampleService extends FTDERGenericExecutionService
 {
 }
 ]]></Declaration>
@@ -13,7 +13,47 @@ final class FTDSpecImplementationSampleService extends FTDERGenericExecutionServ
 				<Source><![CDATA[
     public void runReport(FTDSpecImplementationSampleContract _dataContract)
     {
-        this.executeERReport(_dataContract);
+        this.executeERReport(_dataContract);      
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>doHandleStream</Name>
+				<Source><![CDATA[
+    public void doHandleStream(System.IO.Stream _fileStream, str _filepath, FTDERGenericExecutionDataContract _dataContract)
+    {
+        //
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>convertStreamToPDF</Name>
+				<Source><![CDATA[
+    public boolean convertStreamToPDF()
+    {
+        return false;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>retrieveStream</Name>
+				<Source><![CDATA[
+    public boolean retrieveStream()
+    {
+        return false;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>skipConfiguredDestinations</Name>
+				<Source><![CDATA[
+    public boolean skipConfiguredDestinations()
+    {
+        return false;
     }
 
 ]]></Source>

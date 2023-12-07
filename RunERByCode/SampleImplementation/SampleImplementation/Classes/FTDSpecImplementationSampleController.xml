@@ -3,27 +3,39 @@
 	<Name>FTDSpecImplementationSampleController</Name>
 	<SourceCode>
 		<Declaration><![CDATA[
-class FTDSpecImplementationSampleController extends FTDERGenericExecutionController
+internal final class FTDSpecImplementationSampleController extends FTDERGenericExecutionController
 {
 }
 ]]></Declaration>
 		<Methods>
 			<Method>
-				<Name>caption</Name>
+				<Name>main</Name>
 				<Source><![CDATA[
-	public ClassDescription caption()
+    public static void main(Args _args)
     {
-        return "SpecificImplementationCaption";//This of course must be a label
+        FTDSpecImplementationSampleController::construct().runReportController();
     }
 
 ]]></Source>
 			</Method>
 			<Method>
-				<Name>getFileNameWithoutExtension</Name>
+				<Name>construct</Name>
 				<Source><![CDATA[
-    public Filename getFileNameWithoutExtension()
+    public static FTDSpecImplementationSampleController construct()
     {
-        return "SpecificImplementationFileName";//This of course must be a label
+        return new FTDSpecImplementationSampleController(classStr(FTDSpecImplementationSampleService),
+            methodStr(FTDSpecImplementationSampleService, runReport),
+            SysOperationExecutionMode::Synchronous);
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>caption</Name>
+				<Source><![CDATA[
+    public ClassDescription caption()
+    {
+        return "Specific ER Report";
     }
 
 ]]></Source>
@@ -49,23 +61,11 @@ class FTDSpecImplementationSampleController extends FTDERGenericExecutionControl
 ]]></Source>
 			</Method>
 			<Method>
-				<Name>main</Name>
+				<Name>getFileNameWithoutExtension</Name>
 				<Source><![CDATA[
-    public static void main(Args _args)
+    public Filename getFileNameWithoutExtension()
     {
-        FTDSpecImplementationSampleController::construct().runReportController();
-    }
-
-]]></Source>
-			</Method>
-			<Method>
-				<Name>construct</Name>
-				<Source><![CDATA[
-    public static FTDSpecImplementationSampleController construct()
-    {
-        return new FTDSpecImplementationSampleController(classStr(FTDSpecImplementationSampleService),
-            methodStr(FTDSpecImplementationSampleService, runReport),
-            SysOperationExecutionMode::Synchronous);
+        return "Specific ER report";
     }
 
 ]]></Source>
