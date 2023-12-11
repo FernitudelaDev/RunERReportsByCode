@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>FTDERFileDestinationStream</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+using Microsoft.Dynamics365.LocalizationFramework;
+using BCS = Microsoft.Dynamics365.LocalizationFramework.ExternalApi.BCS;
+using DC = Microsoft.Dynamics365.LocalizationFramework.Services.DocumentConversion;
+using EA = Microsoft.Dynamics365.LocalizationFramework.ExternalApi;
+using TL = Microsoft.Dynamics365.LocalizationFramework.Telemetry;
+
+public class FTDERFileDestinationStream implements ERIFileDestination
+{
+    System.IO.Stream fileStream;
+    str filePath;
+    public DocuRefRecId refRecId;
+    Filename filename;
+    private boolean convertToPDF;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>saveFile</Name>
+				<Source><![CDATA[
+    [Hookable(false)]
+    public System.IO.Stream saveFile(System.IO.Stream _stream, str _filePath)
+    {
+        fileStream = new System.IO.MemoryStream();
+
+        if( _stream.CanSeek)
+        {
+            _stream.Seek(0, System.IO.SeekOrigin::Begin);
+        }
+        _stream.CopyTo(fileStream);
+        filePath = _filePath;
+
+        if (this.parmConvertToPDF()
+            && FeatureStateProvider::isFeatureEnabled(ERPdfConversionFeature::instance()))
+        {
+            this.convertToPDF();
+        };
+
+        return _stream;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>convertToPDF</Name>
+				<Source><![CDATA[
+    public void convertToPDF()
+    {
+        var convertionResult = FTDERFileDestinationStream::tryConvertFileToPdf(fileStream, filePath);
+
+        if (!conPeek(convertionResult, 1))
+        {
+            throw Exception::Error;
+        }
+            
+        boolean ret;
+
+        [ret, fileStream, filePath] = convertionResult;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>tryConvertFileToPDF</Name>
+				<Source><![CDATA[
+    public static Container tryConvertFileToPDF(System.IO.Stream _fileStream, str _filePath)
+    {
+        var pdfExtension = '.pdf';
+        var fileExtension = System.IO.Path::GetExtension(_filePath);
+        boolean ret = true;
+
+        if (!FileExtensionUtils::CanBeConvertedToPDF(fileExtension))
+        {
+            error("@ElectronicReporting:UnableToConvertIntoPDF");
+            ret = false;
+        }
+
+        if (ret && fileExtension != pdfExtension)
+        {
+            var conversionResult = FTDERFileDestinationStream::convertFileToBCSPDFResponse(_fileStream, fileExtension);
+            if (conversionResult.IsValidResponse)
+            {
+                _filePath = System.IO.Path::ChangeExtension(_filePath, pdfExtension);
+                _fileStream = conversionResult.ResultStream;
+            }
+            else
+            {
+                error(strFmt("@ElectronicReporting:FailedToConvertIntoPDF", _filePath, conversionResult.Error));
+                ret = false;
+            }
+        }
+
+        return [ret, _fileStream, _filePath];
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>convertFileToBCSPDFResponse</Name>
+				<Source><![CDATA[
+    private static BCS.ConvertToPdfResponse convertFileToBCSPDFResponse(System.IO.Stream _stream, str _fileExtension)
+    {
+        guid requestId = newGuid();
+        int localeIdentifier = 0;
+
+        if (DC.Pdf.ConvertToPdf::SupportsOfflinePdfConversion(_fileExtension) &&
+            FeatureStateProvider::isFeatureEnabled(EROfflineWordToPdfConversionFeature::instance()))
+        {
+            return DC.Pdf.ConvertToPdf::Convert(_fileExtension, _stream, requestId);
+        }
+
+        BCS.ConvertToPdfRequest request = new BCS.ConvertToPdfRequest();
+        request.FileStream = _stream;
+        request.ClientCorrelationId = requestId;
+        request.ClientName = identifierStr(DynamicsAxElectronicReporting);
+        request.FileExtension = _fileExtension;
+        request.PageOptions = null;
+        request.LocaleIdentifier = localeIdentifier;
+        var conversionClient = EA.BCS.BcsApiClient::Instance;
+        return conversionClient.ConvertToPdf(request, TL.ElectronicReportingMappingTelemetryLogger::Log);
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getLocaleIdentifier</Name>
+				<Source><![CDATA[
+    private int getLocaleIdentifier(str _culture)
+    {
+        var ret = 0;
+
+        if (!ERCultureUtils::TryGetCultureLocaleIdentifier(_culture, byref ret))
+        {
+            Global::warning("@ElectronicReporting:IncorrectLocale");
+        }
+
+        return ret;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>newFileStream</Name>
+				<Source><![CDATA[
+    [Hookable(false)]
+    public System.IO.Stream newFileStream(str _filePath)
+    {
+        return new System.IO.MemoryStream();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getFileStream</Name>
+				<Source><![CDATA[
+    public System.IO.Stream getFileStream()
+    {
+        return fileStream;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getFilePath</Name>
+				<Source><![CDATA[
+    public str getFilePath()
+    {
+        return filePath;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmConvertToPDF</Name>
+				<Source><![CDATA[
+    public boolean parmConvertToPDF(boolean _convertToPDF = convertToPdf)
+    {
+        convertToPdf = _convertToPdf;
+        return convertToPdf;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

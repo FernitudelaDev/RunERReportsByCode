@@ -3,8 +3,10 @@
 	<Name>FTDERGenericExecutionController</Name>
 	<SourceCode>
 		<Declaration><![CDATA[
-abstract class FTDERGenericExecutionController extends ERFormatMappingRunBaseController
+abstract class FTDERGenericExecutionController extends SysOperationServiceController
 {
+
+
 }
 ]]></Declaration>
 		<Methods>
@@ -109,6 +111,8 @@ abstract class FTDERGenericExecutionController extends ERFormatMappingRunBaseCon
         this.setModelAndParameterNamesToDataContract(_dataContract);
 
         _dataContract.parmFileName(this.getFileNameWithoutExtension());
+
+
     }
 
 ]]></Source>
