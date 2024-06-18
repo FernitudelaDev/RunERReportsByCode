@@ -20,6 +20,9 @@ In the solution you will also find a Sample implementation to help you with an e
 As we presented in the 2024 Dynamics minds session: https://youtu.be/Fa-5-jKMV8k, 
 here you are also the services to dynamically run ERs from outside (power platform or wherever you want):
 
-![image](https://github.com/FernitudelaDev/RunERReportsByCode/assets/143327172/495f5001-dd59-48d5-b4f6-5b9b1d019ed2)
+![image](https://github.com/FernitudelaDev/RunERReportsByCode/assets/143327172/1bcac212-2519-4513-9581-13556036d87a)
+
+
+It also includes the implementation of SalesOrderConfirmation Business docs, as an example of how you would need to do it for other BD. Hopefully we will be developing and uploading the rest of the common DP based reports soon.
 
 Thank you!
