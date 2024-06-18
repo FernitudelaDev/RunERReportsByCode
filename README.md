@@ -1,3 +1,5 @@
+Disclaimer: in the 2 frameworks only Export ERs are implemented, coming soon the Import implementation too
+
 # RunERReportsByCode
 
 This solution includes a generic small "framework" to run new ER from code easily and consistetly without worrying about the logic.
@@ -13,5 +15,9 @@ In the solution you will also find a Sample implementation to help you with an e
 
 ![image](https://github.com/FernitudelaDev/RunERReportsByCode/assets/143327172/fc1a7cfc-0224-4b07-8b17-7d83839868c2)
 
+# Service to run ERs from anywhere
+
+As we presented in the 2024 Dynamics minds session: https://youtu.be/Fa-5-jKMV8k, here you are also the services to dynamically run ERs from outside
+![image](https://github.com/FernitudelaDev/RunERReportsByCode/assets/143327172/495f5001-dd59-48d5-b4f6-5b9b1d019ed2)
 
 Thank you!
