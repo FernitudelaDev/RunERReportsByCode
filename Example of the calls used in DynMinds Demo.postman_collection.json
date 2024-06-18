@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "8fad1f71-c974-426b-acb9-79c06fabecba",
+		"name": "Example of the calls used in DynMinds Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5045674"
+	},
+	"item": [
+		{
+			"name": "Run ER Service Vendor Cross Reference",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCIsImtpZCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCJ9.eyJhdWQiOiJodHRwczovL2l0cy1uYS1keW5taW5kc2Z0ZDAyYjU3ZWI0ZjY2YjY3YWZkZXZhb3MuYXhjbG91ZC5keW5hbWljcy5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9iNzM2NmZiZS05NzNiLTQwMzctOGYwNi1iYzlkNzZmN2ZjYTcvIiwiaWF0IjoxNzE2NzEwNzAyLCJuYmYiOjE3MTY3MTA3MDIsImV4cCI6MTcxNjcxNDYwMiwiYWlvIjoiRTJOZ1lMZ1VXeHRsL3lqNjdlRWUzaDkvUHVYRkFRQT0iLCJhcHBpZCI6Ijc2ZDE3OGJkLWQ4MzAtNGY2Yi1iZjNhLTI0NTU3MGI0NGRkMyIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2I3MzY2ZmJlLTk3M2ItNDAzNy04ZjA2LWJjOWQ3NmY3ZmNhNy8iLCJvaWQiOiIwNTlhYmY4Mi00NjRiLTQ1MzEtYTI5My0yNzRhN2Q3YTFmMDAiLCJyaCI6IjAuQVZBQXZtODJ0enVYTjBDUEJyeWRkdmY4cHhVQUFBQUFBQUFBd0FBQUFBQUFBQUJRQUFBLiIsInJvbGVzIjpbIkNvbm5lY3Rvci5GdWxsQWNjZXNzIl0sInN1YiI6IjA1OWFiZjgyLTQ2NGItNDUzMS1hMjkzLTI3NGE3ZDdhMWYwMCIsInRpZCI6ImI3MzY2ZmJlLTk3M2ItNDAzNy04ZjA2LWJjOWQ3NmY3ZmNhNyIsInV0aSI6IlJEMjFQZ0JIREVlakN6djVoaXg1QUEiLCJ2ZXIiOiIxLjAifQ.VS7o5mEt4FVVyTzZXncWhb7Ci6BfEzORtquj3hhG6A-TcgZvJA_Gp9InYdMtTFY0vTxCOawdhBgo3PEro4wVXhalNQa-X-RPdg7f8hokMZRQAJNPrtTWhVb37klsYIBR8kYaz1diUjS9kpWnouGOUptj5_ZXohrivk0_U11GZFqZ0WEE3VWORzSuL85kD2mOx8oTqQhTKXEixHnRuV6gJ4Df4zytXEueneMP0qzO66n7I874aa-61zFfOgnZl6r_FAcrHy5yVgFfs_EehtZ6Dh7T9O0FYyfnXxbZiTLhdP3BJtXfjT68LQ0zor887JbUp1KeWJx2wCnZ3lZpsFfAbw",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "SaveChangesOptions",
+						"value": "8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"_request\":{\r\n        \"FormatMappingName\":\"Vendor cross reference report format\",\r\n        \"JsonContractString\":\"{\\\"fromDate\\\":\\\"/Date(1708473600000)/\\\",\\\"toDate\\\":\\\"/Date(1708473600000)/\\\", \\\"VendAccount\\\":\\\"1001\\\"}\",\r\n        \"ConvertToPDF\":false,\r\n        \"ForceRunDraft\":false,\r\n        \"skipDestinations\":true,\r\n        \"RetrieveBase64File\":true\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "[F&OenvironmentURL]/api/services/FTDServiceGroup/FTDERFromCodeService/runExportERFile",
+					"host": [
+						"[F&OenvironmentURL]"
+					],
+					"path": [
+						"api",
+						"services",
+						"FTDServiceGroup",
+						"FTDERFromCodeService",
+						"runExportERFile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Run ER Service Sales Package label",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCIsImtpZCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCJ9.eyJhdWQiOiJodHRwczovL2l0cy1uYS1keW5taW5kc2Z0ZDAyYjU3ZWI0ZjY2YjY3YWZkZXZhb3MuYXhjbG91ZC5keW5hbWljcy5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9iNzM2NmZiZS05NzNiLTQwMzctOGYwNi1iYzlkNzZmN2ZjYTcvIiwiaWF0IjoxNzE4Njk5MDU0LCJuYmYiOjE3MTg2OTkwNTQsImV4cCI6MTcxODcwMjk1NCwiYWlvIjoiRTJkZ1lKanlMVlJCM0h4WkQ4ZkJGTUVuTEh1N0FBPT0iLCJhcHBpZCI6Ijc2ZDE3OGJkLWQ4MzAtNGY2Yi1iZjNhLTI0NTU3MGI0NGRkMyIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2I3MzY2ZmJlLTk3M2ItNDAzNy04ZjA2LWJjOWQ3NmY3ZmNhNy8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjA1OWFiZjgyLTQ2NGItNDUzMS1hMjkzLTI3NGE3ZDdhMWYwMCIsInJoIjoiMC5BVkFBdm04MnR6dVhOMENQQnJ5ZGR2ZjhweFVBQUFBQUFBQUF3QUFBQUFBQUFBQlFBQUEuIiwicm9sZXMiOlsiQ29ubmVjdG9yLkZ1bGxBY2Nlc3MiXSwic3ViIjoiMDU5YWJmODItNDY0Yi00NTMxLWEyOTMtMjc0YTdkN2ExZjAwIiwidGlkIjoiYjczNjZmYmUtOTczYi00MDM3LThmMDYtYmM5ZDc2ZjdmY2E3IiwidXRpIjoiS096VXE1NDduRXV1ZzRZZms0bzJBQSIsInZlciI6IjEuMCIsInhtc19pZHJlbCI6IjcgMTYifQ.kgjF98p1xxtROiVUX1meLZjnkINwXTFgcr8ZoWpbqQiqTK3Tll72X7xNDmT28OTrHJ61dJbgI0GYdifphi5hKztR7pMcwCAR_v3t8YB7YQ2H8MvoeSViRaN3bepATD70PW4sSRt9cng1oaXnhykgcnEkB9DBHvahktlEBa-Ip0H73PJLz_Jzzk-rhfBP2kxDDekA-dx-EVUl98e7XsHA93yI1ja3LriIIK46GKg-DSmRQZccI9OQQug-MlZ-BbxrikjLAJeONU6rGDMMWujDx4NqNyyZ8Krp9LKUIGdgJ_ZAChh3M2-9OdKDPOdVATtHbB5oqe_FFIQzILqH0ZnPsA"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "SaveChangesOptions",
+						"value": "8"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"_request\":{\r\n        \"FormatMappingName\":\"FTD Sales Package Label Excel\",\r\n        \"JsonContractString\":\"{\\\"SalesId\\\":\\\"000783\\\",\\\"PrintLogo\\\":\\\"No\\\"}\",\r\n        \"ConvertToPDF\":true,\r\n        \"ForceRunDraft\":false,\r\n        \"skipDestinations\":true,\r\n        \"RetrieveBase64File\":true\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "[F&OenvironmentURL]/api/services/FTDServiceGroup/FTDERFromCodeService/runExportERFile",
+					"host": [
+						"[F&OenvironmentURL]"
+					],
+					"path": [
+						"api",
+						"services",
+						"FTDServiceGroup",
+						"FTDERFromCodeService",
+						"runExportERFile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Run ER Sales Confirm",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCIsImtpZCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCJ9.eyJhdWQiOiJodHRwczovL2l0cy1uYS1keW5taW5kc2Z0ZDAyYjU3ZWI0ZjY2YjY3YWZkZXZhb3MuYXhjbG91ZC5keW5hbWljcy5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9iNzM2NmZiZS05NzNiLTQwMzctOGYwNi1iYzlkNzZmN2ZjYTcvIiwiaWF0IjoxNzE4Njk5MDU0LCJuYmYiOjE3MTg2OTkwNTQsImV4cCI6MTcxODcwMjk1NCwiYWlvIjoiRTJkZ1lKanlMVlJCM0h4WkQ4ZkJGTUVuTEh1N0FBPT0iLCJhcHBpZCI6Ijc2ZDE3OGJkLWQ4MzAtNGY2Yi1iZjNhLTI0NTU3MGI0NGRkMyIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2I3MzY2ZmJlLTk3M2ItNDAzNy04ZjA2LWJjOWQ3NmY3ZmNhNy8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjA1OWFiZjgyLTQ2NGItNDUzMS1hMjkzLTI3NGE3ZDdhMWYwMCIsInJoIjoiMC5BVkFBdm04MnR6dVhOMENQQnJ5ZGR2ZjhweFVBQUFBQUFBQUF3QUFBQUFBQUFBQlFBQUEuIiwicm9sZXMiOlsiQ29ubmVjdG9yLkZ1bGxBY2Nlc3MiXSwic3ViIjoiMDU5YWJmODItNDY0Yi00NTMxLWEyOTMtMjc0YTdkN2ExZjAwIiwidGlkIjoiYjczNjZmYmUtOTczYi00MDM3LThmMDYtYmM5ZDc2ZjdmY2E3IiwidXRpIjoiS096VXE1NDduRXV1ZzRZZms0bzJBQSIsInZlciI6IjEuMCIsInhtc19pZHJlbCI6IjcgMTYifQ.kgjF98p1xxtROiVUX1meLZjnkINwXTFgcr8ZoWpbqQiqTK3Tll72X7xNDmT28OTrHJ61dJbgI0GYdifphi5hKztR7pMcwCAR_v3t8YB7YQ2H8MvoeSViRaN3bepATD70PW4sSRt9cng1oaXnhykgcnEkB9DBHvahktlEBa-Ip0H73PJLz_Jzzk-rhfBP2kxDDekA-dx-EVUl98e7XsHA93yI1ja3LriIIK46GKg-DSmRQZccI9OQQug-MlZ-BbxrikjLAJeONU6rGDMMWujDx4NqNyyZ8Krp9LKUIGdgJ_ZAChh3M2-9OdKDPOdVATtHbB5oqe_FFIQzILqH0ZnPsA"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "SaveChangesOptions",
+						"value": "8"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"_request\":{\r\n        \"FormatMappingName\":\"FTD Sales Order Confirmation EXCEL\",\r\n        \"ConvertToPDF\":true,\r\n        \"ForceRunDraft\":false,\r\n        \"skipDestinations\":true,\r\n        \"RetrieveBase64File\":true,\r\n        \"JsonContractString\":\"{\\\"SalesId\\\":\\\"000783\\\"}\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "[F&OenvironmentURL]/api/services/FTDServiceGroup/FTDERFromCodeService/runExportERFile",
+					"host": [
+						"[F&OenvironmentURL]"
+					],
+					"path": [
+						"api",
+						"services",
+						"FTDServiceGroup",
+						"FTDERFromCodeService",
+						"runExportERFile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Run FTD ISO20022 Credit Transfer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCIsImtpZCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCJ9.eyJhdWQiOiJodHRwczovL2l0cy1uYS1keW5taW5kc2Z0ZDAyYjU3ZWI0ZjY2YjY3YWZkZXZhb3MuYXhjbG91ZC5keW5hbWljcy5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9iNzM2NmZiZS05NzNiLTQwMzctOGYwNi1iYzlkNzZmN2ZjYTcvIiwiaWF0IjoxNzE2MTQ0MjM5LCJuYmYiOjE3MTYxNDQyMzksImV4cCI6MTcxNjE0ODEzOSwiYWlvIjoiRTJOZ1lHaS8wbVI2MlBISnllWGZybWw5T2VJYUFRQT0iLCJhcHBpZCI6Ijc2ZDE3OGJkLWQ4MzAtNGY2Yi1iZjNhLTI0NTU3MGI0NGRkMyIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2I3MzY2ZmJlLTk3M2ItNDAzNy04ZjA2LWJjOWQ3NmY3ZmNhNy8iLCJvaWQiOiIwNTlhYmY4Mi00NjRiLTQ1MzEtYTI5My0yNzRhN2Q3YTFmMDAiLCJyaCI6IjAuQVZBQXZtODJ0enVYTjBDUEJyeWRkdmY4cHhVQUFBQUFBQUFBd0FBQUFBQUFBQUJRQUFBLiIsInJvbGVzIjpbIkNvbm5lY3Rvci5GdWxsQWNjZXNzIl0sInN1YiI6IjA1OWFiZjgyLTQ2NGItNDUzMS1hMjkzLTI3NGE3ZDdhMWYwMCIsInRpZCI6ImI3MzY2ZmJlLTk3M2ItNDAzNy04ZjA2LWJjOWQ3NmY3ZmNhNyIsInV0aSI6ImxHT3AxNjZjMDBxMHl4M3RYMWtHQUEiLCJ2ZXIiOiIxLjAifQ.fKgXghxDf0Ko0ntd1RlsU4WBK4kNUc1eraZBRGwGyybN2RMxFtWyGbBjEjnxWesi5hKnZ7e54oPgC3mETuPL8GGqV8ZaYymVsggX8qNypNF8rMGRTS-ZrGCB_C6Vua32OaPDDwVxcaxzBp1QRtqoMeJdM1NMG3PMOs0bRJdnl0IPRNlCBDtT07FL8ddmBimI3UIzx8bvFjpNbcjswanpMwqlXVfEZLvd8qm9gpvd0GaQaJlEbGRGy91c3F9uScXj6OZrDbHbUneCst7TM3JWu5jzNnMUDPmZ8Y4-vzl47k87QfgsIAnEM5QJUTFqN3puOnwb9MIZfN4nujEeFpgGXw"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "SaveChangesOptions",
+						"value": "8"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"_request\":{\r\n        \"FormatMappingName\":\"FTD ISO20022 Credit Transfer\",\r\n        \"ConvertToPDF\":true,\r\n        \"ForceRunDraft\":false,\r\n        \"skipDestinations\":true,\r\n        \"RetrieveBase64File\":true,\r\n        \"JsonContractString\":\"{\\\"ProcessingDate\\\":\\\"/Date(1708473600000)/\\\", \\\"JournalNumber\\\":\\\"00468\\\"}\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "[F&OenvironmentURL]/api/services/FTDServiceGroup/FTDERFromCodeService/runExportERFile",
+					"host": [
+						"[F&OenvironmentURL]"
+					],
+					"path": [
+						"api",
+						"services",
+						"FTDServiceGroup",
+						"FTDERFromCodeService",
+						"runExportERFile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get ER parameters",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCIsImtpZCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCJ9.eyJhdWQiOiJodHRwczovL2l0cy1uYS1keW5taW5kc2Z0ZDAyYjU3ZWI0ZjY2YjY3YWZkZXZhb3MuYXhjbG91ZC5keW5hbWljcy5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9iNzM2NmZiZS05NzNiLTQwMzctOGYwNi1iYzlkNzZmN2ZjYTcvIiwiaWF0IjoxNzE2NzEwNzAyLCJuYmYiOjE3MTY3MTA3MDIsImV4cCI6MTcxNjcxNDYwMiwiYWlvIjoiRTJOZ1lMZ1VXeHRsL3lqNjdlRWUzaDkvUHVYRkFRQT0iLCJhcHBpZCI6Ijc2ZDE3OGJkLWQ4MzAtNGY2Yi1iZjNhLTI0NTU3MGI0NGRkMyIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2I3MzY2ZmJlLTk3M2ItNDAzNy04ZjA2LWJjOWQ3NmY3ZmNhNy8iLCJvaWQiOiIwNTlhYmY4Mi00NjRiLTQ1MzEtYTI5My0yNzRhN2Q3YTFmMDAiLCJyaCI6IjAuQVZBQXZtODJ0enVYTjBDUEJyeWRkdmY4cHhVQUFBQUFBQUFBd0FBQUFBQUFBQUJRQUFBLiIsInJvbGVzIjpbIkNvbm5lY3Rvci5GdWxsQWNjZXNzIl0sInN1YiI6IjA1OWFiZjgyLTQ2NGItNDUzMS1hMjkzLTI3NGE3ZDdhMWYwMCIsInRpZCI6ImI3MzY2ZmJlLTk3M2ItNDAzNy04ZjA2LWJjOWQ3NmY3ZmNhNyIsInV0aSI6IlJEMjFQZ0JIREVlakN6djVoaXg1QUEiLCJ2ZXIiOiIxLjAifQ.VS7o5mEt4FVVyTzZXncWhb7Ci6BfEzORtquj3hhG6A-TcgZvJA_Gp9InYdMtTFY0vTxCOawdhBgo3PEro4wVXhalNQa-X-RPdg7f8hokMZRQAJNPrtTWhVb37klsYIBR8kYaz1diUjS9kpWnouGOUptj5_ZXohrivk0_U11GZFqZ0WEE3VWORzSuL85kD2mOx8oTqQhTKXEixHnRuV6gJ4Df4zytXEueneMP0qzO66n7I874aa-61zFfOgnZl6r_FAcrHy5yVgFfs_EehtZ6Dh7T9O0FYyfnXxbZiTLhdP3BJtXfjT68LQ0zor887JbUp1KeWJx2wCnZ3lZpsFfAbw"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "SaveChangesOptions",
+						"value": "8"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"_FormatMappingName\":\"FTD ISO20022 Credit Transfer\"\r\n}"
+				},
+				"url": {
+					"raw": "[F&OenvironmentURL]/api/services/FTDServiceGroup/FTDERFromCodeService/getERDefinitionParameters",
+					"host": [
+						"[F&OenvironmentURL]"
+					],
+					"path": [
+						"api",
+						"services",
+						"FTDServiceGroup",
+						"FTDERFromCodeService",
+						"getERDefinitionParameters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get runnable ER List",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCIsImtpZCI6IkwxS2ZLRklfam5YYndXYzIyeFp4dzFzVUhIMCJ9.eyJhdWQiOiJodHRwczovL2l0cy1uYS1keW5taW5kc2Z0ZDAyYjU3ZWI0ZjY2YjY3YWZkZXZhb3MuYXhjbG91ZC5keW5hbWljcy5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9iNzM2NmZiZS05NzNiLTQwMzctOGYwNi1iYzlkNzZmN2ZjYTcvIiwiaWF0IjoxNzE2NzEwNzAyLCJuYmYiOjE3MTY3MTA3MDIsImV4cCI6MTcxNjcxNDYwMiwiYWlvIjoiRTJOZ1lMZ1VXeHRsL3lqNjdlRWUzaDkvUHVYRkFRQT0iLCJhcHBpZCI6Ijc2ZDE3OGJkLWQ4MzAtNGY2Yi1iZjNhLTI0NTU3MGI0NGRkMyIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2I3MzY2ZmJlLTk3M2ItNDAzNy04ZjA2LWJjOWQ3NmY3ZmNhNy8iLCJvaWQiOiIwNTlhYmY4Mi00NjRiLTQ1MzEtYTI5My0yNzRhN2Q3YTFmMDAiLCJyaCI6IjAuQVZBQXZtODJ0enVYTjBDUEJyeWRkdmY4cHhVQUFBQUFBQUFBd0FBQUFBQUFBQUJRQUFBLiIsInJvbGVzIjpbIkNvbm5lY3Rvci5GdWxsQWNjZXNzIl0sInN1YiI6IjA1OWFiZjgyLTQ2NGItNDUzMS1hMjkzLTI3NGE3ZDdhMWYwMCIsInRpZCI6ImI3MzY2ZmJlLTk3M2ItNDAzNy04ZjA2LWJjOWQ3NmY3ZmNhNyIsInV0aSI6IlJEMjFQZ0JIREVlakN6djVoaXg1QUEiLCJ2ZXIiOiIxLjAifQ.VS7o5mEt4FVVyTzZXncWhb7Ci6BfEzORtquj3hhG6A-TcgZvJA_Gp9InYdMtTFY0vTxCOawdhBgo3PEro4wVXhalNQa-X-RPdg7f8hokMZRQAJNPrtTWhVb37klsYIBR8kYaz1diUjS9kpWnouGOUptj5_ZXohrivk0_U11GZFqZ0WEE3VWORzSuL85kD2mOx8oTqQhTKXEixHnRuV6gJ4Df4zytXEueneMP0qzO66n7I874aa-61zFfOgnZl6r_FAcrHy5yVgFfs_EehtZ6Dh7T9O0FYyfnXxbZiTLhdP3BJtXfjT68LQ0zor887JbUp1KeWJx2wCnZ3lZpsFfAbw"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "SaveChangesOptions",
+						"value": "8"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "[F&OenvironmentURL]/api/services/FTDServiceGroup/FTDERFromCodeService/getRunnableERList",
+					"host": [
+						"[F&OenvironmentURL]"
+					],
+					"path": [
+						"api",
+						"services",
+						"FTDServiceGroup",
+						"FTDERFromCodeService",
+						"getRunnableERList"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
