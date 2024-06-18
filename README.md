@@ -25,4 +25,6 @@ here you are also the services to dynamically run ERs from outside (power platfo
 
 It also includes the implementation of SalesOrderConfirmation Business docs, as an example of how you would need to do it for other BD. Hopefully we will be developing and uploading the rest of the common DP based reports soon.
 
+If you want to see the calls used in the Dyn minds demo, you can find the postman collection too in this repository.
+
 Thank you!
