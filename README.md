@@ -1,4 +1,6 @@
-Disclaimer: in the 2 frameworks only Export ERs are implemented, coming soon the Import implementation too
+Disclaimer: in the 2 frameworks only Export ERs are implemented, coming soon the Import implementation too.
+
+The different solutions are uploaded as axpp projects, it made no sense to have the source code here since you should not be cloning the repo, you will need to rename it and create the labels etc. Therefore, please download the projects and import them into your D365FO environments to test it and check their functionality, after adapting it to your source control/ models, feel free to include it in your project repository.
 
 # RunERReportsByCode
 
